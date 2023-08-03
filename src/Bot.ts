@@ -29,14 +29,15 @@ class Bot {
 
   private async replyMessagens(message: Message) {
     const convertedMessage = message.body.toLowerCase();
+    const recipient = message.from;
 
     switch(convertedMessage) {
-      case 'começar': this.sendMessage(message.from, services);
-      case '1': this.sendMessage(message.from, unavailableService);
-      case '2': this.sendMessage(message.from, redirectToPortfolio);
-      case '3': this.sendMessage(message.from, farewell);
+      case 'começar': this.sendMessage(recipient, services);
+      case '1': this.sendMessage(recipient, unavailableService);
+      case '2': this.sendMessage(recipient, redirectToPortfolio);
+      case '3': this.sendMessage(recipient, farewell);
       default: this.sendMessage(
-        message.from,
+        recipient,
         personalizedGreeting(message.sender?.name || message.sender?.pushname),
       );
     }
